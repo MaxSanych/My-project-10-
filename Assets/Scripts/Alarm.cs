@@ -5,7 +5,6 @@ public class Alarm : MonoBehaviour
 {
     [SerializeField] private UnityEvent _faced;
     [SerializeField] private UnityEvent _notFaced;
-    [SerializeField] private UnityEvent _soundHasDecreased;
 
     public bool IsFaced { get; private set; }
 
@@ -25,10 +24,5 @@ public class Alarm : MonoBehaviour
             IsFaced = false;
             _notFaced.Invoke();
         }
-    }
-
-    public void TurnOffSound()
-    {
-        _soundHasDecreased.Invoke();
     }
 }

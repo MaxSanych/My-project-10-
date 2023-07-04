@@ -1,27 +1,30 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
+[RequireComponent(typeof(Alarm))]
+[RequireComponent (typeof(AudioSource))]
 public class SoundAmplifer : MonoBehaviour
 {
-    [SerializeField] private AudioSource _audioSource;
+    private AudioSource _audioSource;
+    private Alarm _alarm;
 
-    [SerializeField] private float _minVolume;
-    [SerializeField] private float _maxVolume;
-
-    [SerializeField] private UnityEvent _alarmTurnedOn;
-
+    private float _maxVolume =1;
     private float _volumeChangeRate = 0.001f;
+
+    private void Awake()
+    {
+        _alarm = GetComponent<Alarm>();
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     public void EnableVolumeUp()
     {
-        var alarm = GetComponent<Alarm>();
-        _alarmTurnedOn.Invoke();
+        _audioSource.Play();
 
-        StartCoroutine(TurnUpVolume(_audioSource.volume, alarm));
+        StartCoroutine(TurnUpVolume(_audioSource.volume));
     }
 
-    private IEnumerator TurnUpVolume(float volume, Alarm alarm)
+    private IEnumerator TurnUpVolume(float volume)
     {
         for (float i = 0; i < _maxVolume; i += _volumeChangeRate)
         {
@@ -29,7 +32,7 @@ public class SoundAmplifer : MonoBehaviour
 
             yield return null;
 
-            if (alarm.IsFaced == false)
+            if (_alarm.IsFaced == false)
                 break;
         }
     }

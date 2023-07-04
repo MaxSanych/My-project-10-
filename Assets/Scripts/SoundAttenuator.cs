@@ -1,27 +1,30 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
+[RequireComponent(typeof(Alarm))]
+[RequireComponent(typeof(AudioSource))]
 public class SoundAttenuator : MonoBehaviour
 {
-    [SerializeField] private AudioSource _audioSource;
+    private AudioSource _audioSource;
+    private Alarm _alarm;
 
-    [SerializeField] private float _minVolume;
-    [SerializeField] private float _maxVolume;
-
-    [SerializeField] private UnityEvent _alarmWentOff;
-
+    private float _minVolume = 0;
     private float _volumeChangeRate = 0.001f;
     private float _muteTrigger = 0.001f;
 
-    public void EnableVolumeDown()
+    private void Awake()
     {
-        var alarm = GetComponent<Alarm>();
-        _alarmWentOff.Invoke();
-        StartCoroutine(TurnDownVolume(_audioSource.volume, alarm));
+        _alarm = GetComponent<Alarm>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
-    private IEnumerator TurnDownVolume(float volume, Alarm alarm)
+    public void EnableVolumeDown()
+    {
+        _audioSource.Play();
+        StartCoroutine(TurnDownVolume(_audioSource.volume));
+    }
+
+    private IEnumerator TurnDownVolume(float volume)
     {
         for (float i = 0; i < volume; i += _volumeChangeRate)
         {
@@ -29,12 +32,12 @@ public class SoundAttenuator : MonoBehaviour
 
             yield return null;
 
-            if (_audioSource.volume < _muteTrigger)
+            if (_audioSource.volume <= _muteTrigger)
             {
-                alarm.TurnOffSound();
+                _audioSource.Stop();
                 break;
             }
-            else if(alarm.IsFaced == true)
+            else if (_alarm.IsFaced == true)
             {
                 break;
             }

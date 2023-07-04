@@ -2459,24 +2459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f358e61b0b8f349a9de480b9b1e286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 1000398992}
-  _minVolume: 0
-  _maxVolume: 1
-  _alarmTurnedOn:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1000398992}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1000398994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2519,21 +2501,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _soundHasDecreased:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1000398992}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Stop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1000398995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2546,24 +2513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f66a46838e7da443a01bfb918a343b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 1000398992}
-  _minVolume: 0
-  _maxVolume: 1
-  _alarmWentOff:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1000398992}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &1038849185
 PrefabInstance:
   m_ObjectHideFlags: 0
