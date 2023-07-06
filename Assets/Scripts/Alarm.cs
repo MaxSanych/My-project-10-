@@ -1,27 +1,37 @@
 using UnityEngine;
-using UnityEngine.Events;
+
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(SoundVolumeChanger))]
 
 public class Alarm : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _faced;
-    [SerializeField] private UnityEvent _notFaced;
+    private AudioSource _audioSource;
+    private SoundVolumeChanger _volumeChanger;
 
-    public bool IsFaced { get; private set; }
-    public bool IsNotFaced { get; private set; }
+    private float _minVolume = 0;
+    private float _maxVolume = 1;
+    private float _muteTrigger = 0.001f;
 
-    private void OnTriggerEnter(Collider collision)
+    private void Awake()
     {
-        if (collision.TryGetComponent<Thief>(out Thief thief))
-        {
-            _faced.Invoke();
-        }
+        _audioSource = GetComponent<AudioSource>();
+        _volumeChanger = GetComponent<SoundVolumeChanger>();
     }
 
-    private void OnTriggerExit(Collider collision)
+    private void Update()
     {
-        if (collision.TryGetComponent<Thief>(out Thief thief))
+        if (_audioSource.volume < _muteTrigger)
         {
-            _notFaced.Invoke();
+            _audioSource.Stop();
         }
+    }
+    public void TurnOn(bool isFaced)
+    {
+        _audioSource.Play();
+
+        if (isFaced == true)
+            _volumeChanger.TurnOn(_minVolume, _maxVolume);
+        else
+            _volumeChanger.TurnOn(_maxVolume, _minVolume);
     }
 }

@@ -2304,9 +2304,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1000398990}
   - component: {fileID: 1000398989}
+  - component: {fileID: 1000398996}
+  - component: {fileID: 1000398995}
   - component: {fileID: 1000398994}
-  - component: {fileID: 1000398993}
   - component: {fileID: 1000398992}
+  - component: {fileID: 1000398993}
   m_Layer: 0
   m_Name: AlarmZone
   m_TagString: Untagged
@@ -2458,8 +2460,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f358e61b0b8f349a9de480b9b1e286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 5
 --- !u!114 &1000398994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000398988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f358e61b0b8f349a9de480b9b1e286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1000398995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2471,12 +2484,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7435a662458212d4bb917b6851f79c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1000398996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000398988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc5d830e71a86f4c96ae5d7d2b538d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _faced:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1000398993}
-        m_TargetAssemblyTypeName: SoundAmplifer, Assembly-CSharp
-        m_MethodName: EnableVolumeUp
+      - m_Target: {fileID: 1000398995}
+        m_TargetAssemblyTypeName: Alarm, Assembly-CSharp
+        m_MethodName: EnableVolumeChage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2489,9 +2514,9 @@ MonoBehaviour:
   _notFaced:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1000398993}
-        m_TargetAssemblyTypeName: SoundAmplifer, Assembly-CSharp
-        m_MethodName: EnableVolumeDown
+      - m_Target: {fileID: 1000398995}
+        m_TargetAssemblyTypeName: Alarm, Assembly-CSharp
+        m_MethodName: EnableVolumeChage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
